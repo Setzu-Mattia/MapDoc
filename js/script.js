@@ -1,43 +1,87 @@
+/** Style **/
+var white = "#FFFFFF";
+var grey = "#333333";
+
+var border0 = "#249637";
+var border1 = "#FD3733";
+var border2 = "#2C65A5";
+var background0 = "#1E7D2E";
+var background1 = "#E3312E";
+var background2 = "#26578F";
+var highlightBorder0 = border0;
+var highlightBorder1 = border1;
+var highlightBorder2 = border2;
+var hightlightBackground0 = white;
+var hightlightBackground1 = white;
+var hightlightBackground2 = white;
+var fontColor0 = white;
+var fontColor1 = white;
+var fontColor2 = white;
+var radius0 = 3;
+var radius1 = 3;
+var radius2 = 3;
+
+/** Scaling **/
+var scale = 0.2;
+
 // Set-up
 var nodes = new vis.DataSet();
 var edges = new vis.DataSet();
-var container = document.getElementById("container");
 var data = {nodes: nodes,
            edges: edges};
-var network = new vis.Network(container, data, {});
+var options = {
+    hover: true,
+    groups: {
+        interface: {
+            color: {
+                border: border0,
+                background: background0,
+                highlight: {
+                    background: background0,
+                    border: highlightBorder0,
+                }
+            },
+            fontColor: white
+        },
+        type: {
+            color: {
+                border: border1,
+                background: background1,
+                highlight: {
+                    background: background1,
+                    border: highlightBorder1,
+                }
+            },
+            fontColor: white,
+        },
+        annotation: {
+          color: {
+                border: border2,
+                background: background2,
+                highlight: {
+                    background: background2,
+                    border: highlightBorder2,
+                }
+            },
+            fontColor: white,
+        }
+    }
+}
 
-nodes.add([{id: 0, label: "Node 0"},
-             {id: 1, label: "Node 1"},
-             {id: 2, label: "Node 2"},
-             {id: 3, label: "Node 3"}]);
+// Basic code infos mock
+var docMap = new Map();
+
+var network = new vis.Network(container, data, options);
+
+
+nodes.add([{id: 0, label: "Interface", group: "interface"},
+             {id: 1, label: "Interface", group: "interface"},
+             {id: 2, label: "Type", group: "type"},
+             {id: 3, label: "Annotation", group: "annotation"}]);
 edges.add([{from: 0, to: 1},
          {from: 2, to: 1}]);
 
-
-// Click
-network.on("select",
-           function(properties) {
-                addSibiling(properties.nodes);
-                /*
-                nodes.add({
-                    id: 10,
-                    label: "10"
-                });
-                */
-            });
-
-function addSibiling(node) {
-    var sibilingNodeId = nodes.length;
-    var newEdge = {from: node, to: sibilingNodeId};
-    
-    nodes.add({
-        id: sibilingNodeId,
-        label: sibilingNodeId.toString()
-    });
-    edges.add({
-        from: sibilingNodeId -1,
-        to: sibilingNodeId
-    });
-    
-    network.redraw();
-}
+docMap.set(0, "Interesting comment 0!");
+docMap.set(1, "Interesting comment 1!");
+docMap.set(2, "Interesting comment 2!");
+docMap.set(3, "Interesting comment 3!");

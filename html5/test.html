@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html>
     <head>
         <title>Vis.js test</title>
@@ -12,15 +12,18 @@
         </header>
         
         <div class="body">
-            <div id="container">
+            <div id="container" class="panel">
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/3.12.0/vis.min.js"></script>
                 <script src="../js/script.js"></script>
+                <script src="../js/elements.js"></script>
+                <script src="../js/interaction.js"></script>
             </div>
 
-            <div id="controllers">
-                <form>
-                    <input type=submit value="add +1">
-                </form>
+            <div id="controllers" class="hidden panel">
+                <div id="documentation" class="hidden">Documentation</div>
+                <div id="node_title" class="hidden"></div>
+                <div id="node_type" class="hidden"></div>
+                <div id="node_comment" class="hidden"></div>
             </div>
         </div>
         
