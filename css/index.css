@@ -52,28 +52,32 @@ header * {
 }
 
 #container {
-    width: 100%;
-}
-
-#container, #controllers {
-    display: inline-block;
+    width: 98%;
+    padding: 1%;
 }
 
 #controllers {
-    min-height: 0%;
-    max-height: 40%;
-    padding: 0;
-    
+    height: auto;
+    max-height: 100%;       
+    padding: 1%;
     
     border-style: solid;
     border-width: 0 0;
     border-color: #232936;
-    background: white;
-    color: #333;
+    background: #232936;
+    border-radius: 5px;
+    color: white;
 }
 
 #controllers > * {
-    padding: 1.5%;
+    margin-bottom: 2%;
+    padding: 3% !important;;
+}
+
+#controllers * {
+    padding: 2%;
+    
+    border-radius: 5px;
 }
 
 #controllers #documentation {
@@ -82,29 +86,19 @@ header * {
 }
 
 #node_title, #node_type {
-    display: inline-block;
     min-height: 0;
     max-height: 25%;
+    padding: 1%;
 }
 
-#node_title {
-    width: 72%;
-}
-
-#node_type {
-    max-width: 21.7%;
-}
-
-.group {
-    color: white;
-}
 
 .panel.left {
-    width: 60% !important;
+    width: 58% !important;
     float: left;
 }
 
 .panel.right {
-    width: 40%;
+    width: 36%;
+    margin: 1%;
     float: right;
 }

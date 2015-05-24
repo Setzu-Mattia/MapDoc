@@ -3,38 +3,52 @@ network.on("doubleClick",
             function(properties) {
                 zoom(properties, +1);
             });
+
 // View documentation on hover
-network.on("hoverNode",
-            function(node) {
+network.on("select",
+            function(properties) {
+                // Check for click on empty
+                if (properties.nodes.length === 0) {
+                    hideDocs();
+                    return;
+                }
+    
                 // Show html
-                toggleVisibility(controllers);
-                toggleVisibility(nodeTitle);
-                toggleVisibility(nodeType);
-                toggleVisibility(nodeComment);
+                show(controllers);
+                show(documentation);
+                show(nodeTitle);
+                show(nodeType);
+                show(nodeComment);
                 floatTo(container, -1);
                 floatTo(controllers, +1);
     
                 // Show docs
-                showDocsForNode(node);
-                addNodeToTitle(node);
+                showDocsForNode(parseInt(properties.nodes[0]));
+                addNodeToTitle(parseInt(properties.nodes[0]));
             });
-// Hide documentation on leave
-/*
-network.on("blurNode",
-            function(node) {
-                // Hide html
-                toggleVisibility(controllers);
-                toggleVisibility(nodeTitle);
-                toggleVisibility(nodeType);
-                toggleVisibility(nodeComment);
-            });
-*/
+
+
+// Hide docs panel on click
+function hideDocs() {
+    controllers().classList.remove("right");
+    controllers().classList.add("hidden");
+    
+    container().classList.remove("left");
+    network.moveTo(
+        {position: network.getCenterCoordinates()});
+}
+
+// Show
+function show(element) {
+    element().classList.remove("hidden");
+}
+
 
 // Toggle visibility for the given element.
 function toggleVisibility(element) {
-    x = element;
     element().classList.toggle("hidden");
 }
+
 
 // Make the given element float to the
 // given direction
@@ -47,20 +61,6 @@ function floatTo(element, direction) {
     }
 }
 
-// Add sibiling to node.
-function addSibiling(node) {
-    var sibilingNodeId = nodes.length;
-    var newEdge = {from: node, to: sibilingNodeId};
-    
-    nodes.add({
-        id: sibilingNodeId,
-        label: sibilingNodeId.toString()
-    });
-    edges.add({
-        from: sibilingNodeId -1,
-        to: sibilingNodeId
-    });
-}
 
 // Zoom either in or out
 function zoom (properties, direction) {
@@ -75,17 +75,29 @@ function zoom (properties, direction) {
 
 
 // Show docs
-function showDocsForNode (properties) {
-    var node = nodes.get(properties.node);
+function showDocsForNode (nodeId) {    
+    var node = networkNodes.get(nodeId);
     
     nodeTitle().innerHTML = node.label;
     nodeType().innerHTML = node.group;
-    nodeComment().innerHTML = docMap.get(node.id);
+    nodeComment().innerHTML = docMap.get(nodeId);
+    
+    colorDocs(nodeId);
 }
 
 // Edit title, add current node name
-function addNodeToTitle(properties) {
-    var node = nodes.get(properties.node);
+function addNodeToTitle(nodeId) {
+    var node = networkNodes.get(nodeId);
     
     title()[0].innerHTML = "Title " + node.label;
+}
+
+
+// Color docs panel for the
+// given node.
+function colorDocs(nodeId) {
+    var group = networkNodes.get(nodeId).group;
+    console.log("group: " + group);
+    nodeTitle().classList.add(group);
+    nodeType().classList.add(group);    
 }

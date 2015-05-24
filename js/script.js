@@ -25,10 +25,10 @@ var radius2 = 3;
 var scale = 0.2;
 
 // Set-up
-var nodes = new vis.DataSet();
-var edges = new vis.DataSet();
-var data = {nodes: nodes,
-           edges: edges};
+var networkNodes = new vis.DataSet();
+var networkEdges = new vis.DataSet();
+var data = {nodes: networkNodes,
+           edges: networkEdges};
 var options = {
     hover: true,
     groups: {
@@ -74,11 +74,11 @@ var docMap = new Map();
 var network = new vis.Network(container, data, options);
 
 
-nodes.add([{id: 0, label: "Interface", group: "interface"},
+networkNodes.add([{id: 0, label: "Interface", group: "interface"},
              {id: 1, label: "Interface", group: "interface"},
              {id: 2, label: "Type", group: "type"},
              {id: 3, label: "Annotation", group: "annotation"}]);
-edges.add([{from: 0, to: 1},
+networkEdges.add([{from: 0, to: 1},
          {from: 2, to: 1}]);
 
 docMap.set(0, "Interesting comment 0!");

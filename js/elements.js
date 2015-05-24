@@ -10,6 +10,10 @@ var controllers = function () {
     return document.getElementById("controllers");
 };
 
+var documentation = function () {
+    return document.getElementById("documentation");
+}
+
 var nodeTitle = function () {
     return document.getElementById("node_title");
 }
