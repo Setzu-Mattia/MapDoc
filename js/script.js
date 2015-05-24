@@ -1,3 +1,5 @@
+console.log(container());
+
 /** Style **/
 var white = "#FFFFFF";
 var grey = "#333333";
@@ -75,7 +77,7 @@ var options = {
 // Basic code infos mock
 var docMap = new Map();
 
-var network = new vis.Network(container, data, options);
+var network = new vis.Network(container(), data, options);
 
 
 networkNodes.add([{id: 0, label: "Interface", group: "interface"},

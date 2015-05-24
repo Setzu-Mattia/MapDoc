@@ -31,9 +31,19 @@ network.on("select",
 
 // Hide docs panel on click
 function hideDocs() {
-    controllers().classList.remove("right");
-    controllers().classList.add("hidden");
-    actionsBar().classList.add("hidden");
+    // Animations
+    $(controllers()).hide("drop");
+    $(controllers()).hide("drop");
+    $(actionsBar()).hide("drop");
+    
+    // Actual hide
+    $(controllers()).removeClass("right");
+    $(controllers()).addClass("hidden");
+    $(actionsBar()).addClass("hidden");
+    $(container()).removeClass("left");
+    //controllers().classList.remove("right");
+    //controllers().classList.add("hidden");
+    //actionsBar().classList.add("hidden");
     
     container().classList.remove("left");
     network.moveTo(
@@ -42,13 +52,17 @@ function hideDocs() {
 
 // Show
 function show(element) {
-    element().classList.remove("hidden");
+    $(element()).removeClass("hidden");
+    //element().classList.remove("hidden");
 }
 
 
 // Toggle visibility for the given element.
 function toggleVisibility(element) {
-    element().classList.toggle("hidden");
+    $(element()).toggle("puff");
+    
+    $(element()).toggleClass("hidden");    
+    //element().classList.toggle("puff");
 }
 
 
@@ -56,10 +70,9 @@ function toggleVisibility(element) {
 // given direction
 function floatTo(element, direction) {
     if (direction === -1) {
-        element().classList.add("left");
-    }
-    if (direction === +1) {
-        element().classList.add("right");
+        $(element()).addClass("left");
+    } else {
+        $(element()).addClass("right");
     }
 }
 
@@ -100,8 +113,6 @@ function addNodeToTitle(nodeId) {
 function colorDocs(nodeId) {
     var group = networkNodes.get(nodeId).group;
 
-    //nodeTitle().classList.add(group);
-    //actionsBar().classList.add(group);
     nodeTitle().className = group;
     actionsBar().className = group;
 }

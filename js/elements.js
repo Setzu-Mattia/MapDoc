@@ -1,31 +1,32 @@
 var title = function () {
-    return document.getElementsByTagName("header");
+    return $("header")[0];    
 };
 
 var actionsBar = function () {
-    return document.getElementById("actions");
+    return $("#actions")[0];    
 };
 
 var container = function () {
-    return document.getElementById("container");
+    console.log("container: " + $("#container")[0]);
+    return $("#container")[0];    
 };
 
 var controllers = function () {
-    return document.getElementById("controllers");
+    return $("#controllers")[0];    
 };
 
 var documentation = function () {
-    return document.getElementById("documentation");
+    return $("#documentation")[0];    
 }
 
 var nodeTitle = function () {
-    return document.getElementById("node_title");
+    return $("#node_title")[0];    
 }
 
 var nodeType = function () {
-    return document.getElementById("node_type");
+    return $("#node_type")[0];    
 };
 
 var nodeComment = function () {   
-    return document.getElementById("node_comment");
+    return $("#node_comment")[0];    
 };
