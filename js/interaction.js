@@ -76,17 +76,7 @@ function zoom (properties, direction) {
 
 // Show docs
 function showDocsForNode (properties) {
-    console.log(properties.node);
     var node = nodes.get(properties.node);
-    /*
-    var title = document.getElementById("node_title");
-    var type = document.getElementById("node_type");
-    var comment = document.getElementById("node_comment");
-    */
-    
-    console.log("lb: " + node.label);
-    console.log("grp: " + node.group);
-    console.log("id: " + node.id);
     
     nodeTitle().innerHTML = node.label;
     nodeType().innerHTML = node.group;
@@ -95,7 +85,7 @@ function showDocsForNode (properties) {
 
 // Edit title, add current node name
 function addNodeToTitle(properties) {
-    var node = properties.node;
+    var node = nodes.get(properties.node);
     
-    title.innerHTML += node.label;
+    title()[0].innerHTML = "Title " + node.label;
 }
