@@ -1,3 +1,14 @@
 .interface {
-    background: #1E7D2E;
+    background: #3B8183;
+    color: #333;
+}
+
+.type {
+    background: #ED303C; 
+    color: white;
+}
+
+.annotation {
+    background: #FAD089;
+    color: white;
 }

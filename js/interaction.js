@@ -19,6 +19,7 @@ network.on("select",
                 show(nodeTitle);
                 show(nodeType);
                 show(nodeComment);
+                show(actionsBar);
                 floatTo(container, -1);
                 floatTo(controllers, +1);
     
@@ -32,6 +33,7 @@ network.on("select",
 function hideDocs() {
     controllers().classList.remove("right");
     controllers().classList.add("hidden");
+    actionsBar().classList.add("hidden");
     
     container().classList.remove("left");
     network.moveTo(
@@ -97,7 +99,9 @@ function addNodeToTitle(nodeId) {
 // given node.
 function colorDocs(nodeId) {
     var group = networkNodes.get(nodeId).group;
-    console.log("group: " + group);
-    nodeTitle().classList.add(group);
-    nodeType().classList.add(group);    
+
+    //nodeTitle().classList.add(group);
+    //actionsBar().classList.add(group);
+    nodeTitle().className = group;
+    actionsBar().className = group;
 }

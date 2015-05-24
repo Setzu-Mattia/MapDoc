@@ -2,12 +2,12 @@
 var white = "#FFFFFF";
 var grey = "#333333";
 
-var border0 = "#249637";
-var border1 = "#FD3733";
-var border2 = "#2C65A5";
-var background0 = "#1E7D2E";
-var background1 = "#E3312E";
-var background2 = "#26578F";
+var border0 = "#3B8183";
+var border1 = "#ED303C";
+var border2 = "#FAD089";
+var background0 = "#3B8183";
+var background1 = "#ED303C";
+var background2 = "#FAD089";
 var highlightBorder0 = border0;
 var highlightBorder1 = border1;
 var highlightBorder2 = border2;
@@ -23,6 +23,9 @@ var radius2 = 3;
 
 /** Scaling **/
 var scale = 0.2;
+
+/** Physics **/
+var gForce = 0.7;
 
 // Set-up
 var networkNodes = new vis.DataSet();
@@ -65,7 +68,8 @@ var options = {
             },
             fontColor: white,
         }
-    }
+    },
+    mass: gForce
 }
 
 // Basic code infos mock

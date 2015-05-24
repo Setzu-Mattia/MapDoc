@@ -23,12 +23,16 @@
     font-family: Fira-Sans-Regular;
 }
 
-header {
+header, #actions {
     padding: 1%;
     width: 98%;
+}
+
+header {
     height: 10%;
     
-    background: #232936;
+    background-color: #232936;
+    background-image: url("../html5/images/halftone_33.png");
     color: white;
     
     font-size: 1.2em;
@@ -38,6 +42,17 @@ header {
 header * {
     vertical-align: middle;
 }
+
+#actions {
+    height: auto !important;
+    color: black;
+}
+
+#actions > * {
+    display: inline-block;
+    margin: 0.3 1.5%;
+}
+
 
 .body {
     margin: 1% 0;    
@@ -64,7 +79,8 @@ header * {
     border-style: solid;
     border-width: 0 0;
     border-color: #232936;
-    background: #232936;
+    background-color: #232936;
+    background-image: url("../html5/images/halftone_33.png");
     border-radius: 5px;
     color: white;
 }
@@ -74,6 +90,10 @@ header * {
     padding: 3% !important;;
 }
 
+#controllers > *:last-child {
+    margin-bottom: 0%;
+}
+
 #controllers * {
     padding: 2%;
     
@@ -81,8 +101,8 @@ header * {
 }
 
 #controllers #documentation {
-    background: #232936;
-    color: white;
+    background: white;
+    color: #333;
 }
 
 #node_title, #node_type {
@@ -90,7 +110,6 @@ header * {
     max-height: 25%;
     padding: 1%;
 }
-
 
 .panel.left {
     width: 58% !important;

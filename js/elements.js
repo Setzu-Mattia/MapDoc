@@ -2,6 +2,10 @@ var title = function () {
     return document.getElementsByTagName("header");
 };
 
+var actionsBar = function () {
+    return document.getElementById("actions");
+};
+
 var container = function () {
     return document.getElementById("container");
 };
