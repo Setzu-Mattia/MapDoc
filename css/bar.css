@@ -1,0 +1,22 @@
+#actions button {
+    background: none;
+    font-size: 1em;
+}
+
+#actions.interface {
+    background-image: url(../html5/images/halftone_33_interface.png)
+}
+
+#actions button:hover {
+}
+
+.implements,
+.extends,
+.annotate,
+.edit {
+    color: white;
+}
+
+.annotation .edit {
+    color: #333 !important;
+}

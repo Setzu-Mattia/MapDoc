@@ -10,16 +10,18 @@ network.on("select",
                 // Check for click on empty
                 if (properties.nodes.length === 0) {
                     hideDocs();
+                    removeNodeFromTitle();
                     return;
                 }
     
                 // Show html
-                show(controllers);
-                show(documentation);
-                show(nodeTitle);
-                show(nodeType);
-                show(nodeComment);
-                show(actionsBar);
+                show(controllers());
+                show(documentation());
+                show(nodeTitle());
+                show(nodeType());
+                show(nodeComment());
+                show(actionsBar());
+                showBarFor(properties.nodes[0]);
                 floatTo(container, -1);
                 floatTo(controllers, +1);
     
@@ -33,36 +35,50 @@ network.on("select",
 function hideDocs() {
     // Animations
     $(controllers()).hide("drop");
-    $(controllers()).hide("drop");
     $(actionsBar()).hide("drop");
     
     // Actual hide
-    $(controllers()).removeClass("right");
     $(controllers()).addClass("hidden");
     $(actionsBar()).addClass("hidden");
     $(container()).removeClass("left");
-    //controllers().classList.remove("right");
-    //controllers().classList.add("hidden");
-    //actionsBar().classList.add("hidden");
     
-    container().classList.remove("left");
+    // Center network
     network.moveTo(
-        {position: network.getCenterCoordinates()});
+            {position: network.getCenterCoordinates()});
 }
 
 // Show
 function show(element) {
-    $(element()).removeClass("hidden");
-    //element().classList.remove("hidden");
+    $(element).show("puff");
+    $(element).removeClass("hidden");    
 }
 
 
-// Toggle visibility for the given element.
-function toggleVisibility(element) {
-    $(element()).toggle("puff");
+// Show action bar accordingly
+// to the node's group.
+function showBarFor(nodeId) {
+    var group = networkNodes.get(nodeId).group;
+    console.log("group: " + group + " type: " + typeof group);
+    if (group === "interface") {
+        console.log("in interface");
+        $(".implements").show();
+        $(".extends").show();
+        $(".annotate").show();
+    }
+    if (group === "type") {
+        console.log("in type");
+        $(".implements").hide();
+        $(".extends").show();
+        $(".annotate").show();
+    }
+    if (group === "annotation") {
+        console.log("in annotation");
+        $(".implements").hide();
+        $(".extends").hide();
+        $(".annotate").hide();
+    }
     
-    $(element()).toggleClass("hidden");    
-    //element().classList.toggle("puff");
+    $(".edit").show();
 }
 
 
@@ -93,9 +109,9 @@ function zoom (properties, direction) {
 function showDocsForNode (nodeId) {    
     var node = networkNodes.get(nodeId);
     
-    nodeTitle().innerHTML = node.label;
-    nodeType().innerHTML = node.group;
-    nodeComment().innerHTML = docMap.get(nodeId);
+    $(nodeTitle()).html(node.label);
+    $(nodeType()).html(node.group);
+    $(nodeComment()).html(docMap.get(nodeId));
     
     colorDocs(nodeId);
 }
@@ -104,7 +120,13 @@ function showDocsForNode (nodeId) {
 function addNodeToTitle(nodeId) {
     var node = networkNodes.get(nodeId);
     
-    title()[0].innerHTML = "Title " + node.label;
+    $(title()).html("Title " + node.label);
+}
+
+
+// Reset title
+function removeNodeFromTitle() {
+    $(title()).html("Title");
 }
 
 

@@ -7,7 +7,6 @@ var actionsBar = function () {
 };
 
 var container = function () {
-    console.log("container: " + $("#container")[0]);
     return $("#container")[0];    
 };
 

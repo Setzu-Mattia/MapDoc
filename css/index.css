@@ -32,7 +32,6 @@ header {
     height: 10%;
     
     background-color: #232936;
-    background-image: url("../html5/images/halftone_33.png");
     color: white;
     
     font-size: 1.2em;
@@ -44,6 +43,7 @@ header * {
 }
 
 #actions {
+    background-image: url(../html5/images/halftone_33.png);
     height: auto !important;
     color: black;
 }
@@ -87,7 +87,7 @@ header * {
 
 #controllers > * {
     margin-bottom: 2%;
-    padding: 3% !important;;
+    padding: 3% !important;
 }
 
 #controllers > *:last-child {
