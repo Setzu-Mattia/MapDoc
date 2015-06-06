@@ -1,13 +1,30 @@
 #actions button {
     background: none;
+    border-radius: 3px;
     font-size: 1em;
 }
 
 #actions.interface {
-    background-image: url(../html5/images/halftone_33_interface.png)
+    background-image: url(../html5/images/halftone_33_interface.png);
 }
 
-#actions button:hover {
+#actions.type {
+    background-image: url(../html5/images/halftone_33_type.png);
+}
+
+#actions.annotation {
+    background-image: url(../html5/images/halftone_33_annotation.png);
+}
+
+#actions.interface button:hover,
+#actions.type button:hover {
+    color: #333;
+    background: white;
+}
+
+#actions.annotation button:hover {
+    color: white !important;
+    background: #333;
 }
 
 .implements,

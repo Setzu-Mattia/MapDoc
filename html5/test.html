@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="../css/index.css">
         <link rel="stylesheet" href="../css/groups.css">
         <link rel="stylesheet" href="../css/bar.css">
+        <link rel="stylesheet" href="../css/editor.css">
         <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
         
         <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -16,11 +17,36 @@
             Title
         </header>
         
+        <div id="shadow">
+            <table id="editor">
+                <tr>
+                    <td class="interface" onclick="switchToTextarea('category')">
+                        <div id="category" >Type</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td onclick="switchToTextarea('name')">
+                        <div id="name">Name</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td onclick="switchToTextarea('comment')">
+                        <div id="comment">Comment</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="save" onclick="switchToTextarea('comment')"><button class="active">Save</button></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
         <div id="actions"  class="hidden">
-            <button class="implements">Add implementing class</button>
-            <button class="extends">Extend</button>
-            <button class="annotate">Add annotation</button>
-            <button class="edit">Edit</button>
+            <button class="implements" onclick="showEditor()">Add implementing class</button>
+            <button class="extends" onclick="showEditor()">Extend</button>
+            <button class="annotate" onclick="showEditor()">Add annotation</button>
+            <button class="edit" onclick="showEditor()">Edit</button>
         </div>
         
         <div class="body">

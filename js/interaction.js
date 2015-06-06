@@ -1,4 +1,4 @@
-// Click
+2// Click
 network.on("doubleClick",
             function(properties) {
                 zoom(properties, +1);
@@ -30,6 +30,36 @@ network.on("select",
                 addNodeToTitle(parseInt(properties.nodes[0]));
             });
 
+
+// Hide everything and show editor
+function showEditor() {
+    $("body").css("overflow", "hidden");
+    $("#shadow").show();
+}
+
+
+// Change given dom element to textarea
+function switchToTextarea(id) {
+    var domElement = $('#' + id).parent();
+    var editorHTML = domElement.html();
+    
+    if (editorHTML.search(/div/g) === -1)
+        return;
+    
+    editorHTML = editorHTML.replace(/div/g, "textarea");
+    editorHTML = editorHTML.replace(/>/g, " onchange='updateSaveButton()'>");
+    
+    domElement.html(editorHTML);
+}
+
+
+// Update the save button
+function updateSaveButton() {
+    var button = $("#save button");
+    
+    button.removeClass("active");
+    button.addClass("not_active");
+}
 
 // Hide docs panel on click
 function hideDocs() {
