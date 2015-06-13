@@ -1,5 +1,3 @@
-console.log(container());
-
 /** Style **/
 var white = "#FFFFFF";
 var grey = "#333333";
@@ -76,6 +74,7 @@ var options = {
 
 // Basic code infos mock
 var docMap = new Map();
+var namesTable = new Map();
 
 var network = new vis.Network(container(), data, options);
 
@@ -86,6 +85,11 @@ networkNodes.add([{id: 0, label: "Interface", group: "interface"},
              {id: 3, label: "Annotation", group: "annotation"}]);
 networkEdges.add([{from: 0, to: 1},
          {from: 2, to: 1}]);
+
+namesTable.set(0, "Interface 0");
+namesTable.set(1, "Interface 1!");
+namesTable.set(2, "Type 2");
+namesTable.set(3, "Annotation 3!");
 
 docMap.set(0, "Interesting comment 0!");
 docMap.set(1, "Interesting comment 1!");

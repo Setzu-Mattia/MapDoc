@@ -38,6 +38,10 @@
     background: #FF9C5B;
 }
 
+.close {
+    background: ;
+}
+
 header, #actions {
     padding: 0.5% 1%;
     width: 98%;
@@ -109,6 +113,8 @@ header * {
     border-radius: 5px;
     color: white;
 }
+
+#node_id {display: none;}
 
 #controllers > * {
     margin-bottom: 2%;

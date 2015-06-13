@@ -1,4 +1,4 @@
-2// Click
+// Click
 network.on("doubleClick",
             function(properties) {
                 zoom(properties, +1);
@@ -7,36 +7,55 @@ network.on("doubleClick",
 // View documentation on hover
 network.on("select",
             function(properties) {
-                // Check for click on empty
-                if (properties.nodes.length === 0) {
-                    hideDocs();
-                    removeNodeFromTitle();
-                    return;
-                }
-    
-                // Show html
-                show(controllers());
-                show(documentation());
-                show(nodeTitle());
-                show(nodeType());
-                show(nodeComment());
-                show(actionsBar());
-                showBarFor(properties.nodes[0]);
-                floatTo(container, -1);
-                floatTo(controllers, +1);
-    
-                // Show docs
-                showDocsForNode(parseInt(properties.nodes[0]));
-                addNodeToTitle(parseInt(properties.nodes[0]));
+                onSelect(properties.nodes);
             });
 
+function onSelect(nodes) {
+    
+    // Check for click on empty
+    if (typeof nodes == 'undefined'|| nodes.length === 0) {
+        hideDocs();
+        removeNodeFromTitle();
+        return;
+    }
 
+    // Show html
+    show(controllers());
+    show(documentation());
+    show(nodeTitle());
+    show(nodeType());
+    show(nodeComment());
+    show(actionsBar());
+    showBarFor(nodes[0]);
+    floatTo(container, -1);
+    floatTo(controllers, +1);
+
+    // Put id
+    $("#node_id").html(nodes[0]);
+
+    // Show docs
+    showDocsForNode(parseInt(nodes[0]));
+    addNodeToTitle(parseInt(nodes[0]));
+};
+           
 // Hide everything and show editor
 function showEditor() {
+    console.log("Showing editor for node " + $("#node_id").html());
+    var nodeId = parseInt($("#node_id").html());
+    var group = networkNodes.get(nodeId).group;
+    
     $("body").css("overflow", "hidden");
+    
+    $("#category").addClass(group);
+    $("#name").html(namesTable.get(nodeId).label);
+    $("#comment").html(docMap.get(nodeId));
     $("#shadow").show();
 }
 
+function hideEditor() {
+    $("body").css("overflow", "auto");
+    $("#shadow").hide();    
+}
 
 // Change given dom element to textarea
 function switchToTextarea(id) {
@@ -51,7 +70,6 @@ function switchToTextarea(id) {
     
     domElement.html(editorHTML);
 }
-
 
 // Update the save button
 function updateSaveButton() {
@@ -83,26 +101,22 @@ function show(element) {
     $(element).removeClass("hidden");    
 }
 
-
 // Show action bar accordingly
 // to the node's group.
 function showBarFor(nodeId) {
     var group = networkNodes.get(nodeId).group;
-    console.log("group: " + group + " type: " + typeof group);
+    
     if (group === "interface") {
-        console.log("in interface");
         $(".implements").show();
         $(".extends").show();
         $(".annotate").show();
     }
     if (group === "type") {
-        console.log("in type");
         $(".implements").hide();
         $(".extends").show();
         $(".annotate").show();
     }
     if (group === "annotation") {
-        console.log("in annotation");
         $(".implements").hide();
         $(".extends").hide();
         $(".annotate").hide();
@@ -110,7 +124,6 @@ function showBarFor(nodeId) {
     
     $(".edit").show();
 }
-
 
 // Make the given element float to the
 // given direction
@@ -121,7 +134,6 @@ function floatTo(element, direction) {
         $(element()).addClass("right");
     }
 }
-
 
 // Zoom either in or out
 function zoom (properties, direction) {
@@ -134,12 +146,11 @@ function zoom (properties, direction) {
     }
 }
 
-
 // Show docs
 function showDocsForNode (nodeId) {    
     var node = networkNodes.get(nodeId);
     
-    $(nodeTitle()).html(node.label);
+    $(nodeTitle()).html(namesTable.get(parseInt(nodeId)));
     $(nodeType()).html(node.group);
     $(nodeComment()).html(docMap.get(nodeId));
     
@@ -147,18 +158,14 @@ function showDocsForNode (nodeId) {
 }
 
 // Edit title, add current node name
-function addNodeToTitle(nodeId) {
-    var node = networkNodes.get(nodeId);
-    
-    $(title()).html("Title " + node.label);
+function addNodeToTitle(nodeId) {    
+    $(title()).html("Title " + namesTable.get(parseInt(nodeId)));
 }
-
 
 // Reset title
 function removeNodeFromTitle() {
     $(title()).html("Title");
 }
-
 
 // Color docs panel for the
 // given node.
@@ -167,4 +174,22 @@ function colorDocs(nodeId) {
 
     nodeTitle().className = group;
     actionsBar().className = group;
+}
+
+// Update node values
+function updateNode() {
+    var nodeId = parseInt($("#node_id").html());
+    var node = networkNodes.get(nodeId);
+    
+    console.log();
+    console.log("Updating with " + $("#name").val() + " and " +
+               $("#comment").val());
+    
+    node.label = $("#name").val();
+    
+    docMap.delete(nodeId);
+    docMap.set(nodeId, $("#comment").val());
+    
+    hideEditor();
+    onSelect([nodeId]);
 }
