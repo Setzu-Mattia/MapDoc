@@ -1,17 +1,19 @@
+var saveButtonTarget;
+
 // Click
 network.on("doubleClick",
-            function(properties) {
-                zoom(properties, +1);
-            });
+    function(properties) {
+        zoom(properties, +1);
+    });
 
 // View documentation on hover
 network.on("select",
-            function(properties) {
-                onSelect(properties.nodes);
-            });
+    function(properties) {
+        onSelect(properties.nodes);
+    });
 
 function onSelect(nodes) {
-    
+
     // Check for click on empty
     if (typeof nodes == 'undefined'|| nodes.length === 0) {
         hideDocs();
@@ -37,24 +39,44 @@ function onSelect(nodes) {
     showDocsForNode(parseInt(nodes[0]));
     addNodeToTitle(parseInt(nodes[0]));
 };
-           
+
 // Hide everything and show editor
 function showEditor() {
-    console.log("Showing editor for node " + $("#node_id").html());
     var nodeId = parseInt($("#node_id").html());
     var group = networkNodes.get(nodeId).group;
     
     $("body").css("overflow", "hidden");
     
+    $("#category").removeClass();
     $("#category").addClass(group);
-    $("#name").html(namesTable.get(nodeId).label);
-    $("#comment").html(docMap.get(nodeId));
+    $("#editor #name").val(namesTable.get(nodeId).label);
+    $("#editor #comment").val(docMap.get(nodeId));
     $("#shadow").show();
+    
+    saveButtonTarget = "edit";
+}
+
+// Show form to add an "implements" link
+function showImplementClass() {
+    showEditor();
+    saveButtonTarget = "implements";
+}
+
+// Show form to add an "extends" link
+function showExtendClass() {
+    showEditor();
+    saveButtonTarget = "extends";
+}
+
+// Show form to add an "implements" link
+function showAnnotate() {
+    showEditor();
+    saveButtonTarget = "annotate";
 }
 
 function hideEditor() {
     $("body").css("overflow", "auto");
-    $("#shadow").hide();    
+    $("#shadow").hide();
 }
 
 // Change given dom element to textarea
@@ -92,7 +114,7 @@ function hideDocs() {
     
     // Center network
     network.moveTo(
-            {position: network.getCenterCoordinates()});
+        {position: network.getCenterCoordinates()});
 }
 
 // Show
@@ -176,20 +198,119 @@ function colorDocs(nodeId) {
     actionsBar().className = group;
 }
 
+// Remove node
+function removeNode(nodeId) {
+    networkNodes.remove(nodeId);
+}
+
 // Update node values
 function updateNode() {
-    var nodeId = parseInt($("#node_id").html());
-    var node = networkNodes.get(nodeId);
+    var nodeId = networkNodes.length;
     
-    console.log();
-    console.log("Updating with " + $("#name").val() + " and " +
-               $("#comment").val());
+    switchToTextarea('name');
+    switchToTextarea('comment');
     
+    switch (saveButtonTarget) {
+        case "edit":
+            editNode();
+        break;
+        case "implements":
+            implementNode(nodeId);
+        break;
+        case "extends":
+            extendNode(nodeId);
+        break;
+        case "annotate":
+            annotate(nodeId);
+        break;
+    }
+    
+    hideEditor();
+    onSelect([nodeId]);
+}
+
+function editNode() {
     node.label = $("#name").val();
     
     docMap.delete(nodeId);
     docMap.set(nodeId, $("#comment").val());
-    
-    hideEditor();
-    onSelect([nodeId]);
+}
+
+// Add a new node. Return the node id.
+function addTypeNode(nodeId) {
+    var node;
+    var implementsEdge;
+    var nodeLabel = $("#name").val();
+    var nodeGroup = "class";
+
+    node = {
+        id: nodeId,
+        label: nodeLabel,
+        group: nodeGroup
+    };
+    networkNodes.add(node);
+}
+
+function implementNode(nodeId) {
+    var implementsEdge;
+
+    addTypeNode();
+    implementsEdge = {
+        id: String($("#node_id").html()) + "-" + String(nodeId),
+        from: parseInt($("#node_id").html()),
+        to: nodeId
+    };
+
+    docMap.set(nodeId, $("#comment").val());
+    networkEdges.add(implementsEdge);
+    namesTable.set(nodeId,
+        $("#name").val());
+}
+
+function extendNode(nodeId) {
+    var node;
+    var extendsEdge;
+    var nodeLabel = $("#name").val();
+    var nodeGroup = networkNodes.get($("#node_id").html()).group;
+
+    node = {
+        id: nodeId,
+        label: nodeLabel,
+        group: nodeGroup
+    };
+    extendsEdge = {
+        id: String($("#node_id").html()) + "-" + String(nodeId),
+        from: $("#node_id").html(),
+        to: nodeId
+    };
+
+    networkNodes.add(node);
+    networkEdges.add(extendsEdge);
+    namesTable.set(nodeId,
+                $("#name").val());
+    docMap.set(nodeId, $("#comment").val());
+}
+
+function annotate(nodeId) {
+    var node;
+    var annotatesEdge;
+    var nodeLabel = $("#name").val();
+    var nodeGroup = "annotation";
+
+    node = {
+        id: nodeId,
+        label: nodeLabel,
+        group: nodeGroup
+    };   
+    extendsEdge = {
+        id: String($("#node_id").html()) + "-" + String(nodeId),
+        from:$("#node_id").html(),
+        to: nodeId
+    };
+
+    networkNodes.add(node);
+    networkEdges.add(annotatesEdge);
+    namesTable.set(nodeId,
+                    $("#name").val());
+    docMap.set(nodeId, $("#comment").val());
 }

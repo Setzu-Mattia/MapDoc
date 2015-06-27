@@ -14,7 +14,7 @@
     </head>
     <body>
         <header>
-            Title
+            <p>Title</p>
         </header>
         
         <div id="shadow">
@@ -26,12 +26,12 @@
                 </tr>
                 <tr>
                     <td onclick="switchToTextarea('name')">
-                        <div id="name">Name</div>
+                        <div id="name" placeholder="Name"></div>
                     </td>
                 </tr>
                 <tr>
                     <td onclick="switchToTextarea('comment')">
-                        <div id="comment">Comment</div>
+                        <div id="comment" placeholder="Comment"></div>
                     </td>
                 </tr>
                 <tr>
@@ -44,9 +44,9 @@
         </div>
         
         <div id="actions"  class="hidden">
-            <button class="implements" onclick="showEditor()">Add implementing class</button>
-            <button class="extends" onclick="showEditor()">Extend</button>
-            <button class="annotate" onclick="showEditor()">Add annotation</button>
+            <button class="implements" onclick="showImplementClass()">Add implementing class</button>
+            <button class="extends" onclick="showExtendClass()">Extend</button>
+            <button class="annotate" onclick="showAnnotate()">Add annotation</button>
             <button class="edit" onclick="showEditor()">Edit</button>
         </div>
         

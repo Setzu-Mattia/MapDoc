@@ -83,8 +83,8 @@ networkNodes.add([{id: 0, label: "Interface", group: "interface"},
              {id: 1, label: "Interface", group: "interface"},
              {id: 2, label: "Type", group: "type"},
              {id: 3, label: "Annotation", group: "annotation"}]);
-networkEdges.add([{from: 0, to: 1},
-         {from: 2, to: 1}]);
+networkEdges.add([{id: "0-1", from: 0, to: 1},
+         {id: "2-1", from: 2, to: 1}]);
 
 namesTable.set(0, "Interface 0");
 namesTable.set(1, "Interface 1!");
