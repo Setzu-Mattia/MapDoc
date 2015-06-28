@@ -58,19 +58,27 @@ function showEditor() {
 
 // Show form to add an "implements" link
 function showImplementClass() {
+    switchToTextarea('name');
+    switchToTextarea('comment');
     showEditor();
     saveButtonTarget = "implements";
 }
 
 // Show form to add an "extends" link
 function showExtendClass() {
+    switchToTextarea('name');
+    switchToTextarea('comment');
     showEditor();
     saveButtonTarget = "extends";
 }
 
 // Show form to add an "implements" link
 function showAnnotate() {
+    switchToTextarea('name');
+    switchToTextarea('comment');
     showEditor();
+    $("#category").removeClass();
+    $("#category").addClass("annotation");
     saveButtonTarget = "annotate";
 }
 
@@ -181,7 +189,7 @@ function showDocsForNode (nodeId) {
 
 // Edit title, add current node name
 function addNodeToTitle(nodeId) {    
-    $(title()).html("Title " + namesTable.get(parseInt(nodeId)));
+    $(title()).html(namesTable.get(parseInt(nodeId)));
 }
 
 // Reset title
@@ -241,7 +249,7 @@ function addTypeNode(nodeId) {
     var node;
     var implementsEdge;
     var nodeLabel = $("#name").val();
-    var nodeGroup = "class";
+    var nodeGroup = "type";
 
     node = {
         id: nodeId,
@@ -254,11 +262,11 @@ function addTypeNode(nodeId) {
 function implementNode(nodeId) {
     var implementsEdge;
 
-    addTypeNode();
+    addTypeNode(nodeId);
     implementsEdge = {
         id: String($("#node_id").html()) + "-" + String(nodeId),
         from: parseInt($("#node_id").html()),
-        to: nodeId
+        to: parseInt(nodeId)
     };
 
     docMap.set(nodeId, $("#comment").val());
@@ -302,7 +310,7 @@ function annotate(nodeId) {
         label: nodeLabel,
         group: nodeGroup
     };   
-    extendsEdge = {
+    annotatesEdge = {
         id: String($("#node_id").html()) + "-" + String(nodeId),
         from:$("#node_id").html(),
         to: nodeId
