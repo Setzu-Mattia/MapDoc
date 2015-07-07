@@ -1,4 +1,7 @@
 #actions button {
+    margin: 1%;
+    padding: 1%;
+    
     background: none;
     border-radius: 3px;
     font-size: 1em;
@@ -30,10 +33,12 @@
 .implements,
 .extends,
 .annotate,
-.edit {
+.edit,
+.remove {
     color: white;
 }
 
-.annotation .edit {
+.annotation .edit,
+.remove {
     color: #333 !important;
 }

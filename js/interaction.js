@@ -56,6 +56,14 @@ function showEditor() {
     saveButtonTarget = "edit";
 }
 
+// Remove node from graph
+function removeNode() {
+    var nodeId = $("#node_id").html();
+    console.log("Going to remove " + nodeId);
+    hideDocs();
+    networkNodes.remove(parseInt(nodeId));
+}
+
 // Show form to add an "implements" link
 function showImplementClass() {
     switchToTextarea('name');
@@ -206,11 +214,6 @@ function colorDocs(nodeId) {
     actionsBar().className = group;
 }
 
-// Remove node
-function removeNode(nodeId) {
-    networkNodes.remove(nodeId);
-}
-
 // Update node values
 function updateNode() {
     var nodeId = networkNodes.length;
@@ -238,7 +241,7 @@ function updateNode() {
 }
 
 function editNode() {
-    node.label = $("#name").val();
+    //node.label = $("#name").val();
     
     docMap.delete(nodeId);
     docMap.set(nodeId, $("#comment").val());

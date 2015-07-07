@@ -42,8 +42,9 @@
     background: ;
 }
 
-header, #actions {
-    padding: 0.5% 1%;
+header,
+#actions {
+    padding: 0.3%;
     width: 98%;
 }
 
