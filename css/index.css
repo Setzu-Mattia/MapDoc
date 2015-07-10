@@ -44,12 +44,12 @@
 
 header,
 #actions {
-    padding: 0.3%;
-    width: 98%;
+    padding: 0.2% 0.5%;
+    width: 99%;
 }
 
 header {
-    height: 10%;
+    height: auto;
     
     background-color: #232936;
     color: white;

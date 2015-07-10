@@ -160,6 +160,7 @@ docMap.set(3, "Adapter class. Adapts the interface of the device (GoblinGlider) 
 docMap.set(4, "Device class (adaptee in the pattern).");
 */
 
+/*
 namesTable.set(0, "App");
 namesTable.set(1, "BlindingMagicWeaponImp");
 namesTable.set(2, "BlindingMagicWeapon");
@@ -196,6 +197,29 @@ networkEdges.add([{id: "2-1", from: 2, to: 1},
 docMap.set(0,"In Bridge pattern both abstraction (MagicWeapon) and implementation (MagicWeaponImp) have their own class hierarchies. The interface of the implementations can be changed without affecting the clients.");
 docMap.set(6,"Implementation interface.");
 docMap.set(7, "Abstraction interface");
+*/
+
+namesTable.set(0, "GHobbits");
+namesTable.set(1, "GOrcs");
+namesTable.set(2, "GWeather");
+namesTable.set(3, "Observable");
+namesTable.set(4, "Observer");
+namesTable.set(5, "Race");
+
+networkNodes.add([{id: 0, label: "GHobbits", group: "type"},
+                  {id: 1, label: "GOrcs", group: "type"},
+                  {id: 2, label: "GWeather", group: "type"},
+                  {id: 3, label: "Observable", group: "type"},
+                  {id: 4, label: "Observer", group: "type"},
+                  {id: 5, label: "Race", group: "interface"}]);
+
+networkEdges.add([{id: "0-5", from: 0, to: 5},
+                  {id: "1-5", from: 1, to: 5},
+                  {id: "2-3", from: 2, to: 3},
+                  {id: "3-4", from: 3, to: 4},
+                  {id: "5-4", from: 5, to: 4}]);
+
+docMap.set(3, "Generic observer inspired by Java Generics and Collection by Naftalin & Wadler @param <S> Subject @param <O> Observer @param <A> Argument type");
 
 data = {nodes: networkNodes,
        edges: networkEdges};

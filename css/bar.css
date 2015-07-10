@@ -1,6 +1,6 @@
 #actions button {
     margin: 1%;
-    padding: 1%;
+    padding: 0.5%;
     
     background: none;
     border-radius: 3px;
@@ -38,7 +38,6 @@
     color: white;
 }
 
-.annotation .edit,
-.remove {
+.annotation .edit {
     color: #333 !important;
 }
