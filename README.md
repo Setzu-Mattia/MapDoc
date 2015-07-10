@@ -24,11 +24,7 @@ Here the steps:
 - Open the file **Template.ods**.
 - Read carefully the following abstract, take your time to try and understand it, but no more
 than 5 minutes.
-	Questo tool documenta del codice Java, 
-	rappresentandolo sotto forma di grafo: i suoi nodi
-	sono rossi se rappresentano una classe, verdi se
-	rappresentano un’interfaccia, gialli se rappresentano
-	un’annotazione.
+> Questo tool documenta del codice Java, rappresentandolo sotto forma di grafo: i suoi nodi	sono rossi se rappresentano una classe, verdi se rappresentano un’interfaccia, gialli se rappresentano un’annotazione.
 
 - Start the test in the very order they are provided.
 
