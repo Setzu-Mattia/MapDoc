@@ -1,0 +1,74 @@
+<!DOCTYPE html5>
+<html>
+    <head>
+        <title>Vis.js test</title>
+        
+        <link rel="stylesheet" href="../css/index.css">
+        <link rel="stylesheet" href="../css/groups.css">
+        <link rel="stylesheet" href="../css/bar.css">
+        <link rel="stylesheet" href="../css/editor.css">
+        <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+        
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/3.12.0/vis.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <p></p>
+        </header>
+        
+        <div id="shadow">
+            <table id="editor">
+                <tr>
+                    <td>
+                        <div id="category">Type</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td onclick="switchToTextarea('name')">
+                        <div id="name" placeholder="Name"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td onclick="switchToTextarea('comment')">
+                        <div id="comment" placeholder="Comment"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="save" onclick="updateNode()"><button class="active">Save</button></div>
+                        <div id="close" onclick="hideEditor()"><button class="close">Close</button></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="actions"  class="hidden">
+            <button class="implements" onclick="showImplementClass()">Add implementing class</button>
+            <button class="extends" onclick="showExtendClass()">Extend</button>
+            <button class="annotate" onclick="showAnnotate()">Add annotation</button>
+            <button class="edit" onclick="showEditor()">Edit</button>
+            <button class="remove" onclick="removeNode()">Delete</button>
+        </div>
+        
+        <div class="body">
+            <div id="container" class="panel">
+                <script src="../js/elements.js"></script>
+                <script src="../js/script.js"></script>
+                <script>
+                    setRepo("observer");
+                </script>              
+                <script src="../js/interaction.js"></script>
+            </div>
+
+            <div id="controllers" class="hidden panel">
+                <div id="node_id"></div>
+                <div id="documentation" class="hidden">Documentation</div>
+                <div id="node_title" class="hidden"></div>
+                <div id="node_type" class="hidden"></div>
+                <div id="node_comment" class="hidden"></div>
+            </div>
+        </div>
+        
+    </body>
+</html>
