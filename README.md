@@ -21,7 +21,7 @@ better have it at hand.
 Stop reading here if you have an even number and go down to the ** [JavaDoc] ** section.
 Here the steps:
 
-- Download [this]() folder and unpack it.
+- Download [this](https://drive.google.com/file/d/0B5LsvFT1gELNTnJJYllUdEV3cWc/view?usp=sharing) folder and unpack it.
 - Open the file **Template.ods**.
 - Read carefully the following abstract, take your time to try and understand it, but no more
 than 5 minutes.
