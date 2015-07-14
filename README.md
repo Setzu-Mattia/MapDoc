@@ -2,27 +2,26 @@
 
 A number has been assigned to you:
 
-- even: don't read the sections marked by a **[JavaDoc]** prefix
-- odd: don't read the sections marked by a **[MapDoc]** prefix
+- even: read only the sections marked by a **[JavaDoc]** prefix
+- odd: read only the sections marked by a **[MapDoc]** prefix
 
 Every browser should do the trick, but Chrome is preferred.
 
-###Tests
+#####Tests
 
 In order to run the tests read thoroughly this guide. Before you start you'll need:
 
 - 5 minutes with no interruptions at all.
 - A timer. You'll need to **start it and stop it at the beggining and end of every test**,
 better have it at hand.
-- The [Template.ods](https://docs.google.com/spreadsheets/d/1G6rFllhgzc_AUeeD3tVRo0-R2TlHGQ_xL6BhckvjDXM/pubhtml) file.
+- The [Template.ods](https://docs.google.com/spreadsheets/d/1G6rFllhgzc_AUeeD3tVRo0-R2TlHGQ_xL6BhckvjDXM/edit?usp=sharing) file.
 
 
 ### [MapDoc]
-Stop reading here if you have an even number and go down to the ** [JavaDoc] ** section.
+Stop reading here if you have an even number and go down to the **[JavaDoc]** section.
 Here the steps:
 
 - Download [this](https://drive.google.com/file/d/0B5LsvFT1gELNTnJJYllUdEV3cWc/view?usp=sharing) folder and unpack it.
-- Open the file **Template.ods**.
 - Read carefully the following abstract, take your time to try and understand it, but no more
 than 5 minutes.
 		> Questo tool documenta del codice Java, rappresentandolo sotto forma di grafo: i suoi nodi	sono rossi se rappresentano una classe, verdi se rappresentano un’interfaccia, gialli se rappresentano un’annotazione.
@@ -101,7 +100,7 @@ Thanks for your time! You can stop reading here.
 
 
 ### [JavaDoc]
-Stop reading here if you have an odd number and go up to the ** [MapDoc] ** section.
+Stop reading here if you have an odd number and go up to the **[MapDoc]** section.
 Here the steps:
 
 - Download [](this) folder and unpack it.
