@@ -46,7 +46,7 @@ than 5 minutes.
 
 	> Senza leggere il codice sorgente, individua una o più classi e/o interfacce da aggiungere, se necessario, per creare degli Hobbit.
 
-- Open the file MapDoc/html5/test1.2.html: double click or drag it in the browser
+- Open the file MapDoc/html5/test1.1html: double click or drag it in the browser
 - Once the page has loaded, start the timer and try to answer the previous question. You have a 5 minutes time limit.
 - Once you are done, stop the timer.
 - Note the time in **Template.ods**
