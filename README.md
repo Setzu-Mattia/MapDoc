@@ -2,8 +2,8 @@
 
 A number has been assigned to you:
 
-- even: read only the sections marked by a **[JavaDoc]** prefix
-- odd: read only the sections marked by a **[MapDoc]** prefix
+- even: read only the sections marked by a **[MapDoc]** prefix
+- odd: read only the sections marked by a **[JavaDoc]** prefix
 
 Every browser should do the trick, but Chrome is preferred.
 
@@ -18,7 +18,7 @@ better have it at hand.
 
 
 ### [MapDoc]
-Stop reading here if you have an even number and go down to the **[JavaDoc]** section.
+Stop reading here if you have an odd number and go down to the **[JavaDoc]** section.
 Here the steps:
 
 - Download [this](https://drive.google.com/file/d/0B5LsvFT1gELNclhvX0ZWZ0VuVGc/view?usp=sharing) folder and unpack it.
@@ -100,7 +100,7 @@ Thanks for your time! You can stop reading here.
 
 
 ### [JavaDoc]
-Stop reading here if you have an odd number and go up to the **[MapDoc]** section.
+Stop reading here if you have an even number and go up to the **[MapDoc]** section.
 Here the steps:
 
 - Download [](this) folder and unpack it.
